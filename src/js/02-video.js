@@ -13,3 +13,7 @@ function addKey(event) {
     localStorage.setItem(LS_KEY, JSON.stringify(currentTime));
 }
 
+const savedTime = JSON.parse(localStorage.getItem(LS_KEY));
+console.log(savedTime);
+
+player.setCurrentTime(savedTime);
