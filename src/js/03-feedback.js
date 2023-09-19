@@ -5,7 +5,7 @@ const emailInput = document.querySelector('input[name="email"]');
 const messageTextarea = document.querySelector('textarea[name="message"]');
 const LC_KEY = 'feedback-form-state';
 
-function saveFormState {
+function saveFormState() {
     const formData = {
         email: emailInput.value,
         message: messageTextarea.value,
