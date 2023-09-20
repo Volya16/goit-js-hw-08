@@ -1,4 +1,4 @@
-import throttle from "lodash.throttle";
+// import throttle from "lodash.throttle";
 
 const feedbackForm = document.querySelector(".feedback-form");
 const emailInput = document.querySelector('input[name="email"]');
@@ -17,10 +17,14 @@ function saveFormState() {
 // Loading data from local storage
 function loadFormState() {
     const savedFormData = localStorage.getItem(LC_KEY);
-    if (saveFormState) {
-        const formData = JSON.parcel(savedFormData);
+    if (savedFormData) {
+        const formData = JSON.parse(savedFormData);
         emailInput.value = formData.email;
         messageTextarea.value = formData.message;
     }
-}
+};
 
+emailInput.addEventListener('input', saveFormState);
+messageTextarea.addEventListener('input', saveFormState);
+
+loadFormState();
