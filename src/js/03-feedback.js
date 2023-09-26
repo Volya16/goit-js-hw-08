@@ -25,22 +25,25 @@ function loadFormState() {
     emailInput.value = formData.email || '';
     messageTextarea.value = formData.message || '';
   }
-}
+};
 
-emailInput.addEventListener('input', () => {
-  handleSaveToLS();
-});
+document.addEventListener('DOMContentLoaded', loadFormState);
 
-messageTextarea.addEventListener('input', () => {
-  handleSaveToLS();
-});
+emailInput.addEventListener('input', handleSaveToLS
+);
+messageTextarea.addEventListener('input',handleSaveToLS);
 
 feedbackForm.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
 
-  localStorage.clear(LC_KEY);
+  if (emailInput.value === '' || messageTextarea.value === '') {
+    const message = 'Please fill all fields!';
+    alert(message);
+  }
+
+  localStorage.removeItem(LC_KEY);
 
   emailInput.value = '';
   messageTextarea.value = '';
